@@ -55,6 +55,7 @@ namespace ArchitectureCourse
             var interval = GetInterval();
             _time += interval;
             SourceState.Time = interval;
+            SourceState.RequestAmount++;
             var ret = new Request(Id);
             SourceState.State = $"Generate request id:{ret.Id}";
             return ret;

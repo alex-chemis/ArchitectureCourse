@@ -56,7 +56,7 @@ namespace ArchitectureCourse
 
             Analyzer = new Analyzer(sourceStates, bufferState, deviceStates);
 
-            Buffer = new ArchitectureCourse.Buffer(MaxBufferSize, Analyzer);
+            Buffer = new Buffer(MaxBufferSize, Analyzer);
 
             RequestGenerator = new RequestGenerator(RequestPerSource, Sources, Analyzer, Buffer);
 
@@ -116,7 +116,7 @@ namespace ArchitectureCourse
                 var e = events[i];
                 Console.WriteLine("***********************************************");
                 Console.WriteLine();
-                Console.WriteLine($"Step: {i}, Event: {e.Event}");
+                Console.WriteLine($"Step: {i}, Event: {e.Event}, Time: {e.Time}");
                 Console.WriteLine();
 
                 Console.WriteLine("Sources:");
@@ -128,7 +128,7 @@ namespace ArchitectureCourse
                 }
                 Console.WriteLine();
 
-                Console.WriteLine($"Buffer: {e.BufferState.State}");
+                Console.WriteLine($"Buffer[size:{e.BufferState.Requests.Count}]: {e.BufferState.State}");
                 Console.WriteLine($"{"N",-4}|{"SourceId",-15}|{"RequestId",-15}");
                 Console.WriteLine("----------------------------------------------------------------------------------");
                 for (int j = 0; j < e.BufferState.Requests.Count; j++)
